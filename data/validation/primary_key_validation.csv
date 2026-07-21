@@ -1,0 +1,5 @@
+table_name,total_rows,distinct_primary_key,duplicate_primary_key
+Customers,2123,2123,0
+Products,70,70,0
+Orders,3339,3339,0
+ProductCategory,7,7,0
