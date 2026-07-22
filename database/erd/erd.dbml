@@ -1,0 +1,50 @@
+Table ProductCategory {
+  CategoryID int [pk, increment]
+  CategoryName varchar(50) [not null]
+  CategoryAbbreviation varchar(10) [not null, unique]
+}
+
+Table Products {
+  ProdNumber varchar(10) [pk]
+  ProdName varchar(100) [not null]
+  Category int [not null]
+  Price decimal(10,2) [not null]
+
+  indexes {
+    Category
+  }
+}
+
+Table Customers {
+  CustomerID int [pk, increment]
+  FirstName varchar(50) [not null]
+  LastName varchar(50) [not null]
+  CustomerEmail varchar(150) [not null]
+  CustomerPhone varchar(30)
+  CustomerAddress varchar(150)
+  CustomerCity varchar(100)
+  CustomerState varchar(100)
+  CustomerZip varchar(10)
+}
+
+Table Orders {
+  OrderID int [pk, increment]
+  Date date [not null]
+  CustomerID int [not null]
+  ProdNumber varchar(10) [not null]
+  Quantity int [not null]
+
+  indexes {
+    CustomerID
+    ProdNumber
+    Date
+  }
+}
+
+/* Relationships */
+
+Ref: Orders.CustomerID > Customers.CustomerID
+
+Ref: Orders.ProdNumber > Products.ProdNumber
+
+Ref: Products.Category > ProductCategory.CategoryID
